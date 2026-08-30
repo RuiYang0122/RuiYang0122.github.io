@@ -583,6 +583,7 @@
         <a href="#publications" class="nav-link">Publications</a>
         <a href="#education" class="nav-link">Education</a>
         <a href="#projects" class="nav-link">Projects</a>
+        <a href="#guestbook" class="nav-link">Guestbook</a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
           <i class="fa-regular fa-moon"></i>
           <i class="fa-regular fa-sun"></i>
@@ -731,6 +732,16 @@
         </div>
       </div>
     </section>
+    <!-- ========== Guestbook ========== -->
+    <section id="guestbook" class="block">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title">Guestbook</h2>
+          <div class="section-rule"></div>
+        </div>
+        <div class="giscus reveal reveal-1"></div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -772,6 +783,22 @@
       }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
       els.forEach(function (el) { io.observe(el); });
     })();
+  </script>
+
+  <script src="https://giscus.app/client.js"
+          data-repo="RuiYang0122/RuiYang0122.github.io"
+          data-repo-id="R_kgDOUIqKsg"
+          data-category="General"
+          data-category-id="DIC_kwDOUIqKss4DEgN9"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
   </script>
 </body>
 
