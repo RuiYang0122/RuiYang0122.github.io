@@ -267,7 +267,7 @@
     .section-head { margin-bottom: 32px; }
     .section-title {
       font-family: var(--serif);
-      font-size: clamp(30px, 3.4vw, 40px);
+      font-size: clamp(26px, 2.6vw, 32px);
       font-weight: 400;
       font-style: italic;
       line-height: 1.1;
@@ -328,6 +328,8 @@
       align-items: flex-start;
       padding-top: 2px;
     }
+    .exp-logo-wrap.wide { width: 212px; }
+    .exp-logo-wrap.wide .exp-logo { height: 58px; }
     .exp-logo {
       width: 100%;
       height: 42px;
@@ -380,6 +382,7 @@
       border-radius: 12px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow-sm);
+      background: var(--bg-soft);
     }
 
     /* Education */
@@ -541,7 +544,10 @@
       .hero-rule { margin: 16px 0; }
       .nav-inner { gap: 12px; }
       .nav-links { gap: 14px; }
+      .exp-item { flex-wrap: wrap; }
       .exp-logo-wrap { width: 110px; }
+      .exp-logo-wrap.wide { width: 140px; }
+      .exp-logo-wrap.wide .exp-logo { height: 48px; }
       .exp-thumb { width: 72px; height: 72px; }
     }
   </style>
@@ -611,7 +617,7 @@
               <div class="exp-role">Computer Vision Algorithm Research Intern</div>
               <div class="exp-detail">
                 <p>On-device vision algorithm research for panoramic UAVs (drone division).</p>
-                <p>AIGC4Music.</p>
+                <p>Pre-research on AIGC4Music — generative AI for music creation.</p>
               </div>
             </div>
             <img src="images/uav.jpg" alt="UAV" class="exp-thumb" loading="lazy">
@@ -619,12 +625,12 @@
 
           <div class="exp-item reveal reveal-2">
             <span class="exp-dot"></span>
-            <div class="exp-logo-wrap">
-              <img src="images/shootz-logo.png" alt="Shootz Tech" class="exp-logo">
+            <div class="exp-logo-wrap wide">
+              <img src="images/shootz-logo.png" alt="shootz.tech" class="exp-logo">
             </div>
             <div class="exp-body">
               <div class="exp-header-row">
-                <span class="exp-company"><a href="https://shootz.tech/" target="_blank" rel="noopener">Shootz Tech</a></span>
+                <span class="exp-company"><a href="https://shootz.tech/" target="_blank" rel="noopener">shootz.tech</a></span>
                 <span class="exp-period">Jan 2026 – Jul 2026</span>
               </div>
               <div class="exp-role">Computer Vision Algorithm Research Intern</div>
@@ -633,6 +639,7 @@
                 <p>Automated Basketball Commentary Generation Framework <em>(independent)</em>.</p>
               </div>
             </div>
+            <video class="exp-thumb" src="images/shootz-preview.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Work preview at shootz.tech"></video>
           </div>
 
         </div>
