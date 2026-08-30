@@ -5,7 +5,7 @@
   <title>Rui Yang</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rui Yang — Algorithm Research Intern at Insta360 Research. Researching world models, VLA, and AI for sports.">
+  <meta name="description" content="Rui Yang — Algorithm Research Intern at Insta360 Research. On-device vision algorithms for UAVs and AIGC4Music.">
   <link rel="icon" href="images/avatar.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -187,7 +187,7 @@
        Hero
        ================================================================== */
     .hero {
-      padding: 96px 0 72px;
+      padding: 88px 0 64px;
     }
     .hero-main {
       display: flex;
@@ -203,45 +203,30 @@
       line-height: 1.1;
       margin: 0;
     }
-    .hero-tagline {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(18px, 2.4vw, 22px);
-      font-weight: 400;
-      color: var(--text-2);
-      margin: 14px 0 0;
-      letter-spacing: -0.01em;
-    }
     .hero-rule {
       width: 36px;
       height: 2px;
       background: var(--accent);
-      margin: 22px 0;
+      margin: 20px 0;
       border-radius: 1px;
     }
     .hero-role {
       font-size: 15.5px;
       font-weight: 500;
       color: var(--text-2);
-      margin: 0 0 14px;
+      margin: 0;
     }
     .hero-role .at {
       font-family: var(--mono);
       font-size: 13px;
       color: var(--text-4);
     }
-    .hero-bio {
-      font-size: 15px;
-      color: var(--text-3);
-      margin: 0;
-      max-width: 56ch;
-    }
     .hero-social {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       gap: 18px;
-      margin-top: 26px;
+      margin-top: 24px;
       font-size: 18px;
     }
     .hero-social a { color: var(--text-3); transition: color 0.2s var(--ease); }
@@ -266,8 +251,8 @@
       position: relative;
       z-index: 1;
       display: block;
-      width: 176px;
-      height: 176px;
+      width: 168px;
+      height: 168px;
       object-fit: cover;
       border-radius: 50%;
       border: 1px solid var(--border);
@@ -278,9 +263,8 @@
        Sections
        ================================================================== */
     .block { padding: 56px 0; border-top: 1px solid var(--border-soft); }
-    .block:first-of-type { border-top: none; }
 
-    .section-head { margin-bottom: 34px; }
+    .section-head { margin-bottom: 32px; }
     .section-title {
       font-family: var(--serif);
       font-size: clamp(30px, 3.4vw, 40px);
@@ -304,92 +288,125 @@
       max-width: 60ch;
     }
 
-    /* Interest cards */
-    .interest-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-    }
-    .interest-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
-    }
-    .interest-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--text-4);
-    }
-    .interest-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      margin-bottom: 16px;
-    }
-    .interest-card h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-    .interest-card p {
-      margin: 0;
-      font-size: 14px;
-      color: var(--text-3);
-    }
-
-    /* Education timeline */
-    .timeline {
+    /* ==================================================================
+       Experience (timeline)
+       ================================================================== */
+    .exp-list {
       position: relative;
       padding-left: 26px;
     }
-    .timeline::before {
+    .exp-list::before {
       content: "";
       position: absolute;
       left: 5px;
-      top: 6px;
-      bottom: 6px;
+      top: 8px;
+      bottom: 8px;
       width: 1px;
       background: var(--border);
     }
-    .timeline-item { position: relative; padding-bottom: 28px; }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-dot {
+    .exp-item {
+      position: relative;
+      display: flex;
+      gap: 20px;
+      padding-bottom: 40px;
+    }
+    .exp-item:last-child { padding-bottom: 0; }
+    .exp-dot {
       position: absolute;
       left: -26px;
-      top: 7px;
+      top: 8px;
       width: 11px;
       height: 11px;
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 0 3px var(--accent-soft);
     }
-    .timeline-item h3 {
-      margin: 0 0 4px;
-      font-size: 16px;
+    .exp-logo-wrap {
+      flex-shrink: 0;
+      width: 148px;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 2px;
+    }
+    .exp-logo {
+      width: 100%;
+      height: 42px;
+      object-fit: contain;
+      object-position: left center;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 6px 10px;
+      box-shadow: var(--shadow-sm);
+    }
+    .exp-body { flex: 1; min-width: 0; }
+    .exp-header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .exp-company {
+      font-size: 16.5px;
       font-weight: 600;
+      color: var(--text);
       letter-spacing: -0.01em;
     }
-    .timeline-meta {
+    .exp-period {
       font-family: var(--mono);
       font-size: 12.5px;
       color: var(--text-4);
-      margin-bottom: 8px;
+      white-space: nowrap;
     }
-    .timeline-item p {
-      margin: 0;
+    .exp-role {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-2);
+      margin-top: 2px;
+    }
+    .exp-detail { margin-top: 10px; }
+    .exp-detail p {
+      margin: 0 0 7px;
       font-size: 14.5px;
       color: var(--text-3);
-      max-width: 62ch;
+      max-width: 66ch;
+    }
+    .exp-detail p:last-child { margin-bottom: 0; }
+    .exp-thumb {
+      flex-shrink: 0;
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Education */
+    .edu-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .edu-school {
+      font-size: 16.5px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .edu-period {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--text-4);
+    }
+    .edu-detail {
+      margin-top: 6px;
+      font-size: 14.5px;
+      color: var(--text-3);
+      max-width: 66ch;
     }
 
     /* Project cards */
@@ -482,12 +499,14 @@
        Responsive
        ================================================================== */
     @media (max-width: 720px) {
-      .hero { padding: 64px 0 48px; }
+      .hero { padding: 60px 0 44px; }
       .hero-main { flex-direction: column-reverse; gap: 32px; text-align: left; }
-      .hero-portrait img { width: 132px; height: 132px; }
-      .hero-rule { margin: 18px 0; }
+      .hero-portrait img { width: 128px; height: 128px; }
+      .hero-rule { margin: 16px 0; }
       .nav-inner { gap: 12px; }
       .nav-links { gap: 14px; }
+      .exp-logo-wrap { width: 110px; }
+      .exp-thumb { width: 72px; height: 72px; }
     }
   </style>
 </head>
@@ -497,7 +516,7 @@
     <div class="nav-inner">
       <a href="#top" class="nav-brand">Rui Yang</a>
       <div class="nav-links">
-        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
         <a href="#education" class="nav-link">Education</a>
         <a href="#projects" class="nav-link">Projects</a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -513,14 +532,9 @@
       <div class="hero-main">
         <div class="hero-text">
           <h1 class="hero-name reveal">Rui Yang</h1>
-          <p class="hero-tagline reveal reveal-1">Researching world models &amp; VLA for sports AI.</p>
           <div class="hero-rule reveal reveal-2"></div>
           <p class="hero-role reveal reveal-3">
             Algorithm Research Intern <span class="at">@</span> <a href="https://www.insta360.com/">Insta360 Research</a>
-          </p>
-          <p class="hero-bio reveal reveal-3">
-            Undergraduate at Shandong University. My research interests span world models,
-            vision-language-action (VLA), and computer vision for sports (AI4Sports).
           </p>
           <div class="hero-social reveal reveal-4">
             <a href="https://github.com/RuiYang0122" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -538,29 +552,52 @@
   </header>
 
   <main>
-    <!-- ========== About ========== -->
-    <section id="about" class="block">
+    <!-- ========== Experience ========== -->
+    <section id="experience" class="block">
       <div class="container">
         <div class="section-head reveal">
-          <h2 class="section-title">About</h2>
+          <h2 class="section-title">Experience</h2>
           <div class="section-rule"></div>
         </div>
-        <div class="interest-grid">
-          <div class="interest-card reveal reveal-1">
-            <div class="interest-icon"><i class="fa-solid fa-globe"></i></div>
-            <h3>World Model</h3>
-            <p>Generative world models for embodied and dynamic scenarios.</p>
+        <div class="exp-list">
+
+          <div class="exp-item reveal reveal-1">
+            <span class="exp-dot"></span>
+            <div class="exp-logo-wrap">
+              <img src="images/insta360-logo.png" alt="Insta360" class="exp-logo">
+            </div>
+            <div class="exp-body">
+              <div class="exp-header-row">
+                <span class="exp-company"><a href="https://www.insta360.com/">Insta360 Research</a></span>
+                <span class="exp-period">Jul 2026 – Present</span>
+              </div>
+              <div class="exp-role">Computer Vision Algorithm Research Intern</div>
+              <div class="exp-detail">
+                <p>On-device vision algorithm research for panoramic UAVs (drone division).</p>
+                <p>AIGC4Music.</p>
+              </div>
+            </div>
+            <img src="images/uav.jpg" alt="UAV" class="exp-thumb" loading="lazy">
           </div>
-          <div class="interest-card reveal reveal-2">
-            <div class="interest-icon"><i class="fa-solid fa-robot"></i></div>
-            <h3>Vision-Language-Action</h3>
-            <p>Agents that perceive, reason, and act in physical environments.</p>
+
+          <div class="exp-item reveal reveal-2">
+            <span class="exp-dot"></span>
+            <div class="exp-logo-wrap">
+              <img src="images/shootz-logo.png" alt="Shootz Tech" class="exp-logo">
+            </div>
+            <div class="exp-body">
+              <div class="exp-header-row">
+                <span class="exp-company">Shootz Tech</span>
+                <span class="exp-period">Jan 2026 – Jul 2026</span>
+              </div>
+              <div class="exp-role">Computer Vision Algorithm Research Intern</div>
+              <div class="exp-detail">
+                <p>End-to-End Basketball Video-to-Data Generation System <em>(lead)</em> — player tracking, embedding &amp; clustering.</p>
+                <p>Automated Basketball Commentary Generation Framework <em>(independent)</em>.</p>
+              </div>
+            </div>
           </div>
-          <div class="interest-card reveal reveal-3">
-            <div class="interest-icon"><i class="fa-solid fa-basketball"></i></div>
-            <h3>AI4Sports</h3>
-            <p>Computer vision for sports analysis and automated content creation.</p>
-          </div>
+
         </div>
       </div>
     </section>
@@ -572,15 +609,14 @@
           <h2 class="section-title">Education</h2>
           <div class="section-rule"></div>
         </div>
-        <div class="timeline reveal reveal-1">
-          <div class="timeline-item">
-            <span class="timeline-dot"></span>
-            <h3>Shandong University</h3>
-            <div class="timeline-meta">B.S. in EECS · 2024 – Present</div>
-            <p>
-              CX College Honors Program, School of Information Science &amp; Engineering (山东大学 崇新学堂).
-            </p>
+        <div class="reveal reveal-1">
+          <div class="edu-line">
+            <span class="edu-school">Shandong University</span>
+            <span class="edu-period">B.S. in EECS · 2023 – Present</span>
           </div>
+          <p class="edu-detail">
+            CX College Honors Program, School of Information Science &amp; Engineering (山东大学 崇新学堂).
+          </p>
         </div>
       </div>
     </section>
@@ -601,7 +637,7 @@
                 <a href="https://github.com/RuiYang0122/HoopCut" title="GitHub" aria-label="HoopCut on GitHub"><i class="fab fa-github"></i></a>
               </div>
             </div>
-            <p>Basketball video auto-editing software powered by computer vision.</p>
+            <p>Basketball video auto-editing software powered by computer vision — automated highlight generation from raw game footage.</p>
             <div class="project-tags">
               <span class="tag">TypeScript</span>
               <span class="tag star"><i class="fa-solid fa-star"></i> 20</span>
