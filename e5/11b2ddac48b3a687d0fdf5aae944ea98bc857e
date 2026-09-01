@@ -1,0 +1,20 @@
+index.html
+  s_66d38fc01f7fb4::t_35cd69b6250ef0 657
+  s_66d38fc01f7fb4::t_de7d3352f2ad70 676
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "e511b2ddac48b3a687d0fdf5aae944ea98bc857e",
+  "prompts": {},
+  "sessions": {
+    "s_66d38fc01f7fb4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c3d737c7-3a48-4502-92f9-561f04a059f4",
+        "model": "claude-opus-5"
+      },
+      "human_author": "RuiYang0122 <yangrui0122@foxmail.com>"
+    }
+  }
+}
