@@ -222,6 +222,13 @@
       display: flex;
       align-items: center;
       gap: 56px;
+      padding: 40px 48px;
+      background: color-mix(in srgb, var(--surface) 84%, transparent);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow-md);
     }
     .hero-text { flex: 1; min-width: 0; }
     .hero-name {
@@ -269,11 +276,10 @@
     .hero-bio {
       margin: 26px 0 0;
       font-size: 15px;
-      color: var(--text-3);
+      color: var(--text-2);
       line-height: 1.75;
       max-width: 66ch;
     }
-    .hero-bio + .hero-bio { margin-top: 10px; }
 
     .hero-aside { flex-shrink: 0; }
     .hero-portrait { position: relative; }
@@ -702,7 +708,7 @@
        ================================================================== */
     @media (max-width: 720px) {
       .hero { padding: 96px 0 44px; }
-      .hero-main { flex-direction: column-reverse; gap: 32px; text-align: left; }
+      .hero-main { flex-direction: column-reverse; gap: 32px; padding: 28px 24px; }
       .hero-portrait img { width: 128px; height: 128px; }
       .hero-rule { margin: 16px 0; }
       .nav-inner { gap: 12px; }
@@ -750,10 +756,7 @@
             <a href="mailto:yangrui0122@foxmail.com" class="email-text" title="Email">yangrui0122[at]foxmail.com</a>
           </div>
           <p class="hero-bio reveal reveal-4">
-            Hi! I'm Rui Yang, an undergraduate student at the School of Information Science and Engineering (Chongxin College), Shandong University. I'm now a research intern at <a href="https://www.insta360.com/">Insta360 Research</a>.
-          </p>
-          <p class="hero-bio reveal reveal-4">
-            My research focuses on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.
+            Hi! I'm Rui Yang, an undergraduate student at the School of Information Science and Engineering (Chongxin College), Shandong University. I'm now a research intern at <a href="https://www.insta360.com/">Insta360 Research</a>, focusing on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.
           </p>
         </div>
         <aside class="hero-aside reveal reveal-2">
