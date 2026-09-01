@@ -151,6 +151,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-bio { animation: none; }
     }
 
     /* ==================================================================
@@ -269,15 +270,22 @@
     .hero-bio {
       margin: 26px 0 0;
       padding: 14px 18px;
-      background: color-mix(in srgb, var(--surface) 94%, transparent);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 30%, transparent);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      backdrop-filter: blur(18px) saturate(160%);
+      border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
       border-radius: 14px;
       font-size: 14.5px;
-      color: var(--text);
+      color: #000000;
       line-height: 1.7;
       max-width: 66ch;
+      animation: float-y 5s ease-in-out infinite;
+      will-change: transform;
+    }
+    html[data-theme="dark"] .hero-bio { color: #f4f4f5; }
+    @keyframes float-y {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
 
     .hero-aside { flex-shrink: 0; }
@@ -756,7 +764,7 @@
             <a href="mailto:yangrui0122@foxmail.com" class="email-text" title="Email">yangrui0122[at]foxmail.com</a>
           </div>
           <p class="hero-bio reveal reveal-4">
-            I am pursuing a Bachelor's degree at the School of Information Science and Engineering (Chongxin College), Shandong University. Now, I'm a research intern at <a href="https://www.insta360.com/">Insta360 Research</a>, focusing on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.
+            I am pursuing a Bachelor's degree at the School of Information Science and Engineering (Chongxin College), Shandong University. Now, I'm a research intern at <strong>Insta360 Research</strong>, focusing on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.
           </p>
         </div>
         <aside class="hero-aside reveal reveal-2">
