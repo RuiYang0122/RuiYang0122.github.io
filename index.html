@@ -151,7 +151,6 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
-      .block { transform: none; transition: none; }
     }
 
     /* ==================================================================
@@ -298,14 +297,7 @@
     /* ==================================================================
        Sections
        ================================================================== */
-    .block {
-      position: relative;
-      z-index: 1;
-      padding: 56px 0;
-      transition: transform 0.45s var(--ease-out-expo);
-      will-change: transform;
-    }
-    .block:hover { transform: translateY(-6px); }
+    .block { position: relative; z-index: 1; padding: 56px 0; }
 
     main { position: relative; z-index: 1; }
 
@@ -470,7 +462,10 @@
       overflow: hidden;
       -webkit-appearance: none;
       appearance: none;
+      transition: transform 0.45s var(--ease-out-expo);
+      will-change: transform;
     }
+    .zoom-trigger:hover { transform: translateY(-6px); }
     .zoom-trigger img {
       display: block;
       width: 100%;
