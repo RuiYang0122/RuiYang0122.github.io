@@ -8,7 +8,9 @@
   <meta name="description" content="Rui Yang — Algorithm Research Intern at Insta360 Research. On-device vision algorithms for UAVs and AIGC4Music.">
   <link rel="icon" href="images/avatar.jpg">
 
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <script>
@@ -41,9 +43,9 @@
       --accent-hover:  #1e40af;
       --accent-soft:   rgba(29, 78, 216, 0.08);
 
-      --sans: 'Trebuchet MS', Helvetica, sans-serif;
-      --serif: Georgia, Times, serif;
-      --mono: Monaco, Consolas, 'Lucida Console', monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --serif: 'Newsreader', ui-serif, Georgia, serif;
+      --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
       --content: 1000px;
       --gutter: 28px;
@@ -149,7 +151,6 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
-      .hero-bio { animation: none; }
     }
 
     /* ==================================================================
@@ -268,21 +269,15 @@
     .hero-bio {
       margin: 26px 0 0;
       padding: 14px 18px;
-      background: color-mix(in srgb, var(--surface) 30%, transparent);
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
-      backdrop-filter: blur(18px) saturate(160%);
-      border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
       border-radius: 14px;
       font-size: 14.5px;
-      color: #000000;
+      color: var(--text);
       line-height: 1.7;
-      animation: float-y 5s ease-in-out infinite;
-      will-change: transform;
-    }
-    html[data-theme="dark"] .hero-bio { color: #f4f4f5; }
-    @keyframes float-y {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      max-width: 66ch;
     }
 
     .hero-aside { flex-shrink: 0; }
@@ -556,6 +551,32 @@
       transform: rotate(90deg);
     }
 
+    /* Education */
+    .edu-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .edu-school {
+      font-size: 16.5px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .edu-period {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--text-4);
+    }
+    .edu-detail {
+      margin-top: 6px;
+      font-size: 14.5px;
+      color: var(--text-3);
+      max-width: 66ch;
+    }
+
     /* Publications */
     .pub-list { display: flex; flex-direction: column; gap: 14px; }
     .pub-item {
@@ -709,6 +730,7 @@
       <div class="nav-links">
         <a href="#experience" class="nav-link">Experience</a>
         <a href="#publications" class="nav-link">Publications</a>
+        <a href="#education" class="nav-link">Education</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#competitions" class="nav-link">Competitions</a>
         <a href="#guestbook" class="nav-link">Guestbook</a>
@@ -734,7 +756,7 @@
             <a href="mailto:yangrui0122@foxmail.com" class="email-text" title="Email">yangrui0122[at]foxmail.com</a>
           </div>
           <p class="hero-bio reveal reveal-4">
-            I am pursuing a Bachelor's degree at the School of Information Science and Engineering (Chongxin College), Shandong University. Now, I'm a research intern at <strong>Insta360 Research</strong>, focusing on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.
+            I am pursuing a Bachelor's degree at the School of Information Science and Engineering (Chongxin College), Shandong University. Now, I'm a research intern at <a href="https://www.insta360.com/">Insta360 Research</a>, focusing on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.
           </p>
         </div>
         <aside class="hero-aside reveal reveal-2">
@@ -834,6 +856,25 @@
               <span class="pub-venue">AAAI 2027 · Under Review</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Education ========== -->
+    <section id="education" class="block">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title">Education</h2>
+          <div class="section-rule"></div>
+        </div>
+        <div class="reveal reveal-1">
+          <div class="edu-line">
+            <span class="edu-school">Shandong University</span>
+            <span class="edu-period">B.S. in EECS · 2023 – Present</span>
+          </div>
+          <p class="edu-detail">
+            CX College Honors Program, School of Information Science &amp; Engineering.
+          </p>
         </div>
       </div>
     </section>
