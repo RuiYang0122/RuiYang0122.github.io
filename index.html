@@ -281,7 +281,8 @@
       color: #000000;
       line-height: 1.7;
     }
-    .hero-bio + .hero-bio { margin-top: 10px; }
+    .hero-bio p { margin: 0; }
+    .hero-bio p + p { margin-top: 10px; }
     html[data-theme="dark"] .hero-bio { color: #f4f4f5; }
 
     .hero-aside { flex-shrink: 0; }
@@ -733,12 +734,10 @@
             <a href="mailto:yangrui0122@foxmail.com" class="email-text" title="Email">yangrui0122[at]foxmail.com</a>
           </div>
           <div class="hero-bio-wrap reveal reveal-4">
-            <p class="hero-bio">
-              I am pursuing a Bachelor's degree at the School of Information Science and Engineering (Chongxin College), Shandong University. Now, I'm a research intern at <strong>Insta360 Research</strong>.
-            </p>
-            <p class="hero-bio">
-              My research focuses on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.
-            </p>
+            <div class="hero-bio">
+              <p>I am pursuing a Bachelor's degree in EECS at the School of Information Science and Engineering, Shandong University. Now, I'm a research intern at <strong>Insta360 Research</strong>.</p>
+              <p>My research focuses on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.</p>
+            </div>
           </div>
         </div>
         <aside class="hero-aside reveal reveal-2">
