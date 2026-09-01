@@ -8,9 +8,7 @@
   <meta name="description" content="Rui Yang — Algorithm Research Intern at Insta360 Research. On-device vision algorithms for UAVs and AIGC4Music.">
   <link rel="icon" href="images/avatar.jpg">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <script>
@@ -43,9 +41,9 @@
       --accent-hover:  #1e40af;
       --accent-soft:   rgba(29, 78, 216, 0.08);
 
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --serif: 'Newsreader', ui-serif, Georgia, serif;
-      --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      --sans: 'Trebuchet MS', Helvetica, sans-serif;
+      --serif: Georgia, Times, serif;
+      --mono: Monaco, Consolas, 'Lucida Console', monospace;
 
       --content: 1000px;
       --gutter: 28px;
@@ -90,7 +88,7 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--sans);
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       transition: background 0.35s var(--ease), color 0.35s var(--ease);
@@ -174,7 +172,7 @@
       gap: 22px;
     }
     .nav-brand {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--text);
       letter-spacing: -0.01em;
@@ -186,7 +184,7 @@
       gap: 20px;
     }
     .nav-link {
-      font-size: 13.5px;
+      font-size: 14.5px;
       font-weight: 500;
       color: var(--text-3);
       transition: color 0.2s var(--ease);
@@ -203,7 +201,7 @@
       justify-content: center;
       color: var(--text-3);
       cursor: pointer;
-      font-size: 13px;
+      font-size: 14px;
       transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
     }
     .theme-toggle:hover { color: var(--text); border-color: var(--text-4); }
@@ -226,7 +224,7 @@
     .hero-text { flex: 1; min-width: 0; }
     .hero-name {
       font-family: var(--sans);
-      font-size: clamp(34px, 5vw, 46px);
+      font-size: clamp(38px, 5.5vw, 52px);
       font-weight: 700;
       letter-spacing: -0.03em;
       line-height: 1.1;
@@ -240,14 +238,14 @@
       border-radius: 1px;
     }
     .hero-role {
-      font-size: 15.5px;
+      font-size: 16.5px;
       font-weight: 500;
       color: var(--text-2);
       margin: 0;
     }
     .hero-role .at {
       font-family: var(--mono);
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--text-4);
     }
     .hero-social {
@@ -256,29 +254,32 @@
       flex-wrap: wrap;
       gap: 18px;
       margin-top: 24px;
-      font-size: 18px;
+      font-size: 19px;
     }
     .hero-social a { color: var(--text-3); transition: color 0.2s var(--ease); }
     .hero-social a:hover { color: var(--text); }
     .email-text {
       font-family: var(--mono);
-      font-size: 13px !important;
+      font-size: 13.5px !important;
       color: var(--text-3) !important;
     }
     .email-text:hover { color: var(--text) !important; }
     .hero-bio {
       margin: 26px 0 0;
       padding: 14px 18px;
-      background: color-mix(in srgb, var(--surface) 94%, transparent);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 30%, transparent);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      backdrop-filter: blur(18px) saturate(160%);
+      border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
       border-radius: 14px;
-      font-size: 14.5px;
-      color: var(--text);
+      font-size: 15.5px;
+      color: #000000;
       line-height: 1.7;
-      max-width: 66ch;
+      transition: opacity 0.7s var(--ease-out-expo), transform 0.35s var(--ease-out-expo);
+      will-change: transform;
     }
+    .hero-bio:hover { transform: translateY(-6px); }
+    html[data-theme="dark"] .hero-bio { color: #f4f4f5; }
 
     .hero-aside { flex-shrink: 0; }
     .hero-portrait { position: relative; }
@@ -317,7 +318,7 @@
     .section-head { margin-bottom: 32px; }
     .section-title {
       font-family: var(--serif);
-      font-size: clamp(26px, 2.6vw, 32px);
+      font-size: clamp(28px, 2.8vw, 34px);
       font-weight: 400;
       font-style: italic;
       line-height: 1.1;
@@ -333,7 +334,7 @@
     }
     .section-desc {
       margin: 14px 0 0;
-      font-size: 15px;
+      font-size: 16px;
       color: var(--text-3);
       max-width: 60ch;
     }
@@ -397,19 +398,19 @@
       flex-wrap: wrap;
     }
     .exp-company {
-      font-size: 16.5px;
+      font-size: 17.5px;
       font-weight: 600;
       color: var(--text);
       letter-spacing: -0.01em;
     }
     .exp-period {
       font-family: var(--mono);
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--text-4);
       white-space: nowrap;
     }
     .exp-role {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--text-2);
       margin-top: 2px;
@@ -419,7 +420,7 @@
     .exp-detail { margin-top: 10px; }
     .exp-detail p {
       margin: 0 0 7px;
-      font-size: 14.5px;
+      font-size: 15.5px;
       color: var(--text-3);
       max-width: 66ch;
     }
@@ -443,7 +444,7 @@
     .comp-body { flex: 1 1 auto; min-width: 0; }
     .comp-title {
       display: block;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 600;
       color: var(--text);
       letter-spacing: -0.01em;
@@ -457,7 +458,7 @@
       margin-top: 10px;
     }
     .comp-role {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--text-2);
     }
@@ -551,32 +552,6 @@
       transform: rotate(90deg);
     }
 
-    /* Education */
-    .edu-line {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .edu-school {
-      font-size: 16.5px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
-    .edu-period {
-      font-family: var(--mono);
-      font-size: 12.5px;
-      color: var(--text-4);
-    }
-    .edu-detail {
-      margin-top: 6px;
-      font-size: 14.5px;
-      color: var(--text-3);
-      max-width: 66ch;
-    }
-
     /* Publications */
     .pub-list { display: flex; flex-direction: column; gap: 14px; }
     .pub-item {
@@ -587,14 +562,14 @@
       box-shadow: var(--shadow-sm);
     }
     .pub-title {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
       letter-spacing: -0.01em;
       color: var(--text);
     }
     .pub-authors {
       margin-top: 6px;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-3);
     }
     .pub-authors strong { color: var(--text-2); font-weight: 600; }
@@ -604,11 +579,11 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
-      font-size: 13px;
+      font-size: 14px;
     }
     .pub-venue {
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--accent);
       background: var(--accent-soft);
       border-radius: 999px;
@@ -645,7 +620,7 @@
     }
     .project-card h3 {
       margin: 0;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
       letter-spacing: -0.01em;
       color: var(--text);
@@ -656,7 +631,7 @@
     .project-card p {
       flex: 1;
       margin: 0 0 16px;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-3);
     }
     .project-tags {
@@ -667,7 +642,7 @@
     }
     .tag {
       font-family: var(--mono);
-      font-size: 11.5px;
+      font-size: 12px;
       padding: 3px 9px;
       border-radius: 999px;
       border: 1px solid var(--border);
@@ -695,10 +670,10 @@
       gap: 12px;
     }
     .footer-note {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-4);
     }
-    .footer-links { display: flex; align-items: center; gap: 16px; font-size: 15px; }
+    .footer-links { display: flex; align-items: center; gap: 16px; font-size: 16px; }
     .footer-links a { color: var(--text-4); transition: color 0.2s var(--ease); }
     .footer-links a:hover { color: var(--text-2); }
 
@@ -730,7 +705,6 @@
       <div class="nav-links">
         <a href="#experience" class="nav-link">Experience</a>
         <a href="#publications" class="nav-link">Publications</a>
-        <a href="#education" class="nav-link">Education</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#competitions" class="nav-link">Competitions</a>
         <a href="#guestbook" class="nav-link">Guestbook</a>
@@ -756,7 +730,7 @@
             <a href="mailto:yangrui0122@foxmail.com" class="email-text" title="Email">yangrui0122[at]foxmail.com</a>
           </div>
           <p class="hero-bio reveal reveal-4">
-            I am pursuing a Bachelor's degree at the School of Information Science and Engineering (Chongxin College), Shandong University. Now, I'm a research intern at <a href="https://www.insta360.com/">Insta360 Research</a>, focusing on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.
+            I am pursuing a Bachelor's degree at the School of Information Science and Engineering (Chongxin College), Shandong University. Now, I'm a research intern at <strong>Insta360 Research</strong>, focusing on AIGC — especially efficient few-step generative modeling — and AI4Sport, particularly VLM-based sports video analysis.
           </p>
         </div>
         <aside class="hero-aside reveal reveal-2">
@@ -856,25 +830,6 @@
               <span class="pub-venue">AAAI 2027 · Under Review</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== Education ========== -->
-    <section id="education" class="block">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2 class="section-title">Education</h2>
-          <div class="section-rule"></div>
-        </div>
-        <div class="reveal reveal-1">
-          <div class="edu-line">
-            <span class="edu-school">Shandong University</span>
-            <span class="edu-period">B.S. in EECS · 2023 – Present</span>
-          </div>
-          <p class="edu-detail">
-            CX College Honors Program, School of Information Science &amp; Engineering.
-          </p>
         </div>
       </div>
     </section>
