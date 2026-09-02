@@ -541,7 +541,7 @@
     }
     .lightbox-img {
       max-width: min(1080px, 100%);
-      max-height: 76vh;
+      max-height: 84vh;
       border-radius: 14px;
       background: #000;
       box-shadow: 0 24px 90px rgba(0, 0, 0, 0.55);
@@ -569,78 +569,29 @@
       transform: rotate(90deg);
     }
 
-    /* Gallery navigation (prev/next arrows, counter, thumbnail strip) */
-    .lightbox-nav {
+    /* Gallery progress line (thin, per-photo main color) */
+    .lightbox-progress {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 3;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      background: rgba(255, 255, 255, 0.10);
-      color: #ffffff;
-      font-size: 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s ease;
-    }
-    .lightbox-nav:hover { background: rgba(255, 255, 255, 0.22); }
-    .lightbox-nav[hidden] { display: none; }
-    .lightbox-prev { left: 20px; }
-    .lightbox-next { right: 20px; }
-
-    .lightbox-count {
-      position: absolute;
-      top: 22px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      color: #ffffff;
-      font-family: var(--mono);
-      font-size: 13px;
-      padding: 5px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      background: rgba(255, 255, 255, 0.12);
-      white-space: nowrap;
-    }
-    .lightbox-count[hidden] { display: none; }
-
-    .lightbox-thumbs {
-      position: absolute;
-      bottom: 22px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
       display: flex;
-      gap: 8px;
-      padding: 8px;
-      max-width: min(92vw, 620px);
-      overflow-x: auto;
-      background: rgba(0, 0, 0, 0.38);
-      border-radius: 14px;
-      -webkit-overflow-scrolling: touch;
+      gap: 3px;
+      width: min(52vw, 260px);
+      height: 3px;
+      border-radius: 2px;
     }
-    .lightbox-thumbs[hidden] { display: none; }
-    .lightbox-thumb {
-      flex: 0 0 auto;
-      width: 52px;
-      height: 52px;
-      padding: 0;
-      border: 2px solid transparent;
-      border-radius: 8px;
-      overflow: hidden;
-      cursor: pointer;
-      background: #000;
-      opacity: 0.5;
-      transition: opacity 0.2s ease, border-color 0.2s ease;
+    .lightbox-progress[hidden] { display: none; }
+    .lightbox-progress-seg {
+      flex: 1;
+      height: 100%;
+      border-radius: 2px;
+      opacity: 0.55;
+      background: rgba(255, 255, 255, 0.35);
+      transition: opacity 0.2s ease, background-color 0.2s ease;
     }
-    .lightbox-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
-    .lightbox-thumb.active { border-color: #ffffff; opacity: 1; }
+    .lightbox-progress-seg.active { opacity: 1; }
 
     /* Publications */
     .pub-list { display: flex; flex-direction: column; gap: 14px; }
@@ -1026,12 +977,9 @@
   <!-- Lightbox preview (video & image gallery) -->
   <div class="lightbox" id="lightbox" hidden>
     <button class="lightbox-close" type="button" aria-label="Close preview"><i class="fa-solid fa-xmark"></i></button>
-    <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous photo" hidden><i class="fa-solid fa-chevron-left"></i></button>
-    <button class="lightbox-nav lightbox-next" type="button" aria-label="Next photo" hidden><i class="fa-solid fa-chevron-right"></i></button>
-    <span class="lightbox-count" hidden></span>
     <video class="lightbox-video" controls playsinline preload="auto" hidden></video>
     <img class="lightbox-img" alt="Enlarged preview" hidden>
-    <div class="lightbox-thumbs" hidden></div>
+    <div class="lightbox-progress" hidden></div>
   </div>
 
   <script>
@@ -1052,28 +1000,47 @@
       if (lightbox) {
         var lbVideo = lightbox.querySelector('.lightbox-video');
         var lbImage = lightbox.querySelector('.lightbox-img');
-        var lbPrev = lightbox.querySelector('.lightbox-prev');
-        var lbNext = lightbox.querySelector('.lightbox-next');
-        var lbCount = lightbox.querySelector('.lightbox-count');
-        var lbThumbs = lightbox.querySelector('.lightbox-thumbs');
+        var lbProgress = lightbox.querySelector('.lightbox-progress');
 
         var gallery = [];
+        var colors = [];
         var currentIndex = 0;
 
-        function renderThumbs() {
-          lbThumbs.innerHTML = '';
+        function extractMainColor(src, cb) {
+          var img = new Image();
+          img.onload = function () {
+            try {
+              var c = document.createElement('canvas');
+              var s = 10;
+              c.width = s; c.height = s;
+              var ctx = c.getContext('2d');
+              ctx.drawImage(img, 0, 0, s, s);
+              var d = ctx.getImageData(0, 0, s, s).data;
+              var r = 0, g = 0, b = 0, n = 0;
+              for (var i = 0; i < d.length; i += 4) {
+                r += d[i]; g += d[i + 1]; b += d[i + 2]; n++;
+              }
+              cb('rgb(' + Math.round(r / n) + ',' + Math.round(g / n) + ',' + Math.round(b / n) + ')');
+            } catch (err) {
+              cb('rgba(255,255,255,0.4)');
+            }
+          };
+          img.onerror = function () { cb('rgba(255,255,255,0.4)'); };
+          img.src = src;
+        }
+
+        function renderProgress() {
+          lbProgress.innerHTML = '';
+          colors = [];
           gallery.forEach(function (item, i) {
-            var t = document.createElement('button');
-            t.type = 'button';
-            t.className = 'lightbox-thumb';
-            t.setAttribute('aria-label', 'Photo ' + (i + 1));
-            var img = document.createElement('img');
-            img.src = item.src;
-            img.alt = '';
-            img.loading = 'lazy';
-            t.appendChild(img);
-            t.addEventListener('click', function () { showImage(i); });
-            lbThumbs.appendChild(t);
+            var seg = document.createElement('span');
+            seg.className = 'lightbox-progress-seg';
+            lbProgress.appendChild(seg);
+            colors.push('rgba(255,255,255,0.35)');
+            extractMainColor(item.src, function (col) {
+              colors[i] = col;
+              if (i !== currentIndex) seg.style.background = col;
+            });
           });
         }
 
@@ -1084,15 +1051,12 @@
           lbVideo.hidden = true;
           lbVideo.removeAttribute('src');
           var multi = gallery.length > 1;
-          lbPrev.hidden = !multi;
-          lbNext.hidden = !multi;
-          lbCount.hidden = !multi;
-          lbThumbs.hidden = !multi;
+          lbProgress.hidden = !multi;
           if (multi) {
-            lbCount.textContent = (i + 1) + ' / ' + gallery.length;
-            lbThumbs.querySelectorAll('.lightbox-thumb').forEach(function (t, idx) {
-              t.classList.toggle('active', idx === i);
-              if (idx === i) t.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            lbProgress.querySelectorAll('.lightbox-progress-seg').forEach(function (seg, idx) {
+              var active = idx === i;
+              seg.style.background = active ? '#ffffff' : colors[idx];
+              seg.classList.toggle('active', idx === i);
             });
           }
         }
@@ -1109,7 +1073,7 @@
             btns.forEach(function (b) { gallery.push({ src: b.getAttribute('data-src') }); });
             currentIndex = Array.prototype.indexOf.call(btns, btn);
             if (currentIndex < 0) currentIndex = 0;
-            if (gallery.length > 1) renderThumbs();
+            if (gallery.length > 1) renderProgress();
             showImage(currentIndex);
           } else {
             gallery = [];
@@ -1119,10 +1083,7 @@
             lbImage.hidden = true;
             lbImage.removeAttribute('src');
             lbVideo.play().catch(function () {});
-            lbPrev.hidden = true;
-            lbNext.hidden = true;
-            lbCount.hidden = true;
-            lbThumbs.hidden = true;
+            lbProgress.hidden = true;
           }
           lightbox.hidden = false;
           requestAnimationFrame(function () { lightbox.classList.add('open'); });
@@ -1148,8 +1109,6 @@
         document.querySelectorAll('.zoom-trigger').forEach(function (btn) {
           btn.addEventListener('click', function () { openLightbox(btn); });
         });
-        lbPrev.addEventListener('click', prevImage);
-        lbNext.addEventListener('click', nextImage);
         lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
         lightbox.addEventListener('click', function (e) {
           if (e.target === lightbox) closeLightbox();
@@ -1160,6 +1119,20 @@
           else if (e.key === 'ArrowLeft') prevImage();
           else if (e.key === 'ArrowRight') nextImage();
         });
+
+        // Mouse wheel navigation (accumulates deltas, resets after idle)
+        var wheelAccum = 0, wheelTimer = null;
+        lightbox.addEventListener('wheel', function (e) {
+          if (lightbox.hidden || gallery.length <= 1) return;
+          e.preventDefault();
+          wheelAccum += e.deltaY;
+          if (Math.abs(wheelAccum) < 50) return;
+          if (wheelAccum > 0) nextImage(); else prevImage();
+          wheelAccum = 0;
+          if (wheelTimer) clearTimeout(wheelTimer);
+          wheelTimer = setTimeout(function () { wheelAccum = 0; }, 200);
+        }, { passive: false });
+
         var touchX = null, touchY = null;
         lightbox.addEventListener('touchstart', function (e) {
           touchX = e.changedTouches[0].clientX;
