@@ -499,6 +499,21 @@
       align-self: flex-start;
     }
 
+    /* ==================================================================
+       Memories (photo wall)
+       ================================================================== */
+    .memories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .memories-grid .zoom-trigger {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      border-radius: 14px;
+    }
+
     /* Lightbox preview (video & image) */
     .lightbox {
       position: fixed;
@@ -696,6 +711,7 @@
       .hero-bio { padding: 12px 14px; }
       .comp-item { flex-direction: column; gap: 16px; }
       .comp-thumb { width: 100%; aspect-ratio: 16 / 9; }
+      .memories-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -709,6 +725,7 @@
         <a href="#publications" class="nav-link">Publications</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#competitions" class="nav-link">Competitions</a>
+        <a href="#memories" class="nav-link">Memories</a>
         <a href="#guestbook" class="nav-link">Guestbook</a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
           <i class="fa-regular fa-moon"></i>
@@ -883,6 +900,30 @@
           <button class="zoom-trigger comp-thumb" type="button" data-kind="image" data-src="images/competition.jpg" aria-label="View competition photo">
             <img src="images/competition.jpg" alt="Intelligent car race — 5G remote autonomous driving vehicle" loading="lazy">
           </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Memories ========== -->
+    <section id="memories" class="block">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title">Memories</h2>
+          <div class="section-rule"></div>
+        </div>
+        <div class="memories-grid">
+          <button class="zoom-trigger reveal reveal-1" type="button" data-kind="image" data-src="images/memories/memories-01.jpg" aria-label="View memory photo 1"><img src="images/memories/memories-01.jpg" alt="Memory photo 1" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-2" type="button" data-kind="image" data-src="images/memories/memories-02.jpg" aria-label="View memory photo 2"><img src="images/memories/memories-02.jpg" alt="Memory photo 2" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-3" type="button" data-kind="image" data-src="images/memories/memories-03.jpg" aria-label="View memory photo 3"><img src="images/memories/memories-03.jpg" alt="Memory photo 3" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-4" type="button" data-kind="image" data-src="images/memories/memories-04.jpg" aria-label="View memory photo 4"><img src="images/memories/memories-04.jpg" alt="Memory photo 4" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-1" type="button" data-kind="image" data-src="images/memories/memories-05.jpg" aria-label="View memory photo 5"><img src="images/memories/memories-05.jpg" alt="Memory photo 5" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-2" type="button" data-kind="image" data-src="images/memories/memories-06.jpg" aria-label="View memory photo 6"><img src="images/memories/memories-06.jpg" alt="Memory photo 6" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-3" type="button" data-kind="image" data-src="images/memories/memories-07.jpg" aria-label="View memory photo 7"><img src="images/memories/memories-07.jpg" alt="Memory photo 7" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-4" type="button" data-kind="image" data-src="images/memories/memories-08.jpg" aria-label="View memory photo 8"><img src="images/memories/memories-08.jpg" alt="Memory photo 8" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-1" type="button" data-kind="image" data-src="images/memories/memories-09.jpg" aria-label="View memory photo 9"><img src="images/memories/memories-09.jpg" alt="Memory photo 9" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-2" type="button" data-kind="image" data-src="images/memories/memories-10.jpg" aria-label="View memory photo 10"><img src="images/memories/memories-10.jpg" alt="Memory photo 10" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-3" type="button" data-kind="image" data-src="images/memories/memories-11.jpg" aria-label="View memory photo 11"><img src="images/memories/memories-11.jpg" alt="Memory photo 11" loading="lazy"></button>
+          <button class="zoom-trigger reveal reveal-4" type="button" data-kind="image" data-src="images/memories/memories-12.jpg" aria-label="View memory photo 12"><img src="images/memories/memories-12.jpg" alt="Memory photo 12" loading="lazy"></button>
         </div>
       </div>
     </section>
