@@ -1006,41 +1006,32 @@
         var colors = [];
         var currentIndex = 0;
 
-        function extractMainColor(src, cb) {
-          var img = new Image();
-          img.onload = function () {
-            try {
-              var c = document.createElement('canvas');
-              var s = 10;
-              c.width = s; c.height = s;
-              var ctx = c.getContext('2d');
-              ctx.drawImage(img, 0, 0, s, s);
-              var d = ctx.getImageData(0, 0, s, s).data;
-              var r = 0, g = 0, b = 0, n = 0;
-              for (var i = 0; i < d.length; i += 4) {
-                r += d[i]; g += d[i + 1]; b += d[i + 2]; n++;
-              }
-              cb('rgb(' + Math.round(r / n) + ',' + Math.round(g / n) + ',' + Math.round(b / n) + ')');
-            } catch (err) {
-              cb('rgba(255,255,255,0.4)');
-            }
-          };
-          img.onerror = function () { cb('rgba(255,255,255,0.4)'); };
-          img.src = src;
-        }
+        // Pre-extracted main colors (average) for the memory photos.
+        var mainColors = {
+          'images/memories/memories-01.jpg': '#4e637b',
+          'images/memories/memories-02.jpg': '#679dbb',
+          'images/memories/memories-03.jpg': '#457693',
+          'images/memories/memories-04.jpg': '#87a8d2',
+          'images/memories/memories-05.jpg': '#4b5e68',
+          'images/memories/memories-06.jpg': '#a9bac4',
+          'images/memories/memories-07.jpg': '#49588a',
+          'images/memories/memories-08.jpg': '#706a6b',
+          'images/memories/memories-09.jpg': '#6996c2',
+          'images/memories/memories-10.jpg': '#54484f',
+          'images/memories/memories-11.jpg': '#9fbaca',
+          'images/memories/memories-12.jpg': '#4c5782'
+        };
 
         function renderProgress() {
           lbProgress.innerHTML = '';
           colors = [];
-          gallery.forEach(function (item, i) {
+          gallery.forEach(function (item) {
+            var col = mainColors[item.src] || 'rgba(255,255,255,0.35)';
             var seg = document.createElement('span');
             seg.className = 'lightbox-progress-seg';
+            seg.style.background = col;
             lbProgress.appendChild(seg);
-            colors.push('rgba(255,255,255,0.35)');
-            extractMainColor(item.src, function (col) {
-              colors[i] = col;
-              if (i !== currentIndex) seg.style.background = col;
-            });
+            colors.push(col);
           });
         }
 
@@ -1126,11 +1117,11 @@
           if (lightbox.hidden || gallery.length <= 1) return;
           e.preventDefault();
           wheelAccum += e.deltaY;
-          if (Math.abs(wheelAccum) < 50) return;
+          if (Math.abs(wheelAccum) < 120) return;
           if (wheelAccum > 0) nextImage(); else prevImage();
           wheelAccum = 0;
           if (wheelTimer) clearTimeout(wheelTimer);
-          wheelTimer = setTimeout(function () { wheelAccum = 0; }, 200);
+          wheelTimer = setTimeout(function () { wheelAccum = 0; }, 250);
         }, { passive: false });
 
         var touchX = null, touchY = null;
