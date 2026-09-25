@@ -101,7 +101,11 @@
       top: 0;
       left: 0;
       right: 0;
-      height: min(78vh, 780px);
+      /* Fixed height so the photo never rescales when the window height
+         changes. With `cover` and a width under ~1951px the scale is locked
+         by this height, so the image size stays constant and only the
+         horizontal crop shifts. */
+      height: 780px;
       z-index: 0;
       pointer-events: none;
       background:
@@ -109,7 +113,7 @@
           color-mix(in srgb, var(--bg) 16%, transparent) 0%,
           transparent 34%,
           var(--bg) 88%),
-        url('images/bg.jpg') top center / cover no-repeat;
+        url('images/bg.jpg?v=2') top center / cover no-repeat;
     }
     html[data-theme="dark"] body::before {
       background:
@@ -117,7 +121,7 @@
           color-mix(in srgb, var(--bg) 40%, transparent) 0%,
           color-mix(in srgb, var(--bg) 12%, transparent) 34%,
           var(--bg) 88%),
-        url('images/bg.jpg') top center / cover no-repeat;
+        url('images/bg.jpg?v=2') top center / cover no-repeat;
     }
 
     a { color: var(--accent); text-decoration: none; }
