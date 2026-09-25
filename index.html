@@ -257,7 +257,14 @@
       gap: 10px;
       margin-top: 14px;
     }
+    .hero-btn-wrap {
+      display: flex;
+      transition: transform 0.25s var(--ease-out-expo);
+      will-change: transform;
+    }
+    .hero-btn-wrap:hover { transform: translateY(-2px); }
     .hero-btn {
+      flex: 1;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -767,15 +774,21 @@
             </div>
           </div>
           <div class="hero-links reveal reveal-4">
-            <a class="hero-btn" href="https://github.com/RuiYang0122" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-            <a class="hero-btn" href="CV_RuiYang.pdf" target="_blank" rel="noopener">
-              <i class="fa-regular fa-file-lines"></i> CV
-            </a>
-            <a class="hero-btn" href="mailto:yangrui0122@foxmail.com">
-              <i class="fa-regular fa-envelope"></i> Email
-            </a>
+            <div class="hero-btn-wrap">
+              <a class="hero-btn" href="https://github.com/RuiYang0122" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+            <div class="hero-btn-wrap">
+              <a class="hero-btn" href="CV_RuiYang.pdf" target="_blank" rel="noopener">
+                <i class="fa-regular fa-file-lines"></i> CV
+              </a>
+            </div>
+            <div class="hero-btn-wrap">
+              <a class="hero-btn" href="mailto:yangrui0122@foxmail.com">
+                <i class="fa-regular fa-envelope"></i> Email
+              </a>
+            </div>
           </div>
         </div>
         <aside class="hero-aside reveal reveal-2">
