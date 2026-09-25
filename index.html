@@ -231,9 +231,9 @@
       border-radius: 1px;
     }
     .hero-bio-wrap {
-      /* Clears the snow band in images/bg.jpg (roughly the top 30-55% of the
-         photo, which lands around y=234-429 in the viewport). */
-      margin: clamp(80px, 20vh, 220px) 0 0;
+      /* Partly clears the snow band in images/bg.jpg (the band renders around
+         y=234-429). Tune this one number to slide the card up/down. */
+      margin: clamp(56px, 15vh, 160px) 0 0;
       transition: opacity 0.7s var(--ease-out-expo);
     }
     .hero-bio {
@@ -731,7 +731,7 @@
       .exp-thumb { width: 132px; height: 74px; }
       .zoom-trigger { width: 132px; height: 74px; }
       .hero-bio { padding: 12px 14px; }
-      .hero-bio-wrap { margin-top: 210px; }
+      .hero-bio-wrap { margin-top: 150px; }
       .hero-links { gap: 8px; }
       .hero-btn { padding: 6px 8px; font-size: 13px; }
       .comp-item { flex-direction: column; gap: 16px; }
