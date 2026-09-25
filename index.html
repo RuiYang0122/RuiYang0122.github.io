@@ -231,8 +231,9 @@
       border-radius: 1px;
     }
     .hero-bio-wrap {
-      /* Puts the card top at y=327 (rule bottom 211 + this margin), which
-         leaves the peak in images/bg.jpg clear. Tune this one number. */
+      /* Card top lands at y=327 (rule bottom 211 + this margin). bg.jpg has
+         its top 10% cropped away, which parks the snow band at y~174-390,
+         so the peak stays clear of the card. Tune this one number. */
       margin: clamp(48px, 11vh, 116px) 0 0;
       transition: opacity 0.7s var(--ease-out-expo);
     }
