@@ -283,6 +283,29 @@
     .hero-bio p + p { margin-top: 10px; }
     html[data-theme="dark"] .hero-bio { color: #f4f4f5; }
 
+    .hero-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 9px 17px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      background: color-mix(in srgb, var(--surface) 45%, transparent);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      backdrop-filter: blur(18px) saturate(160%);
+      border: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+      border-radius: 999px;
+      transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
+    }
+    .hero-cv:hover {
+      background: color-mix(in srgb, var(--surface) 80%, transparent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .hero-cv i { font-size: 13px; color: var(--accent); }
+
     .hero-aside { flex-shrink: 0; }
     .hero-portrait { position: relative; }
     .portrait-glow {
@@ -747,8 +770,8 @@
       <div class="nav-links">
         <a href="#experience" class="nav-link">Experience</a>
         <a href="#publications" class="nav-link">Publications</a>
-        <a href="#projects" class="nav-link">Projects</a>
         <a href="#competitions" class="nav-link">Competitions</a>
+        <a href="#projects" class="nav-link">Projects</a>
         <a href="#memories" class="nav-link">Memories</a>
         <a href="#guestbook" class="nav-link">Guestbook</a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -778,6 +801,9 @@
               <p>My research focuses on AIGC — especially efficient few-step generative modeling based on Flow Matching with multimodal reference conditioning — and AI4Sport, particularly VLM-based sports video analysis.</p>
             </div>
           </div>
+          <a class="hero-cv reveal reveal-4" href="CV_RuiYang.pdf" target="_blank" rel="noopener">
+            <i class="fa-regular fa-file-lines"></i> CV
+          </a>
         </div>
         <aside class="hero-aside reveal reveal-2">
           <div class="hero-portrait">
@@ -880,6 +906,28 @@
       </div>
     </section>
 
+    <!-- ========== Competitions ========== -->
+    <section id="competitions" class="block">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title">Competitions</h2>
+          <div class="section-rule"></div>
+        </div>
+        <div class="comp-item reveal reveal-1">
+          <div class="comp-body">
+            <span class="comp-title">20th National University Students Intelligent Car Race · 5G Remote Autonomous Driving Vehicle Challenge</span>
+            <div class="comp-meta">
+              <span class="pub-venue">First Prize · North China Division (Ranked 2nd)</span>
+              <span class="comp-role">Team Leader · CV &amp; Perception Algorithm Lead · Vehicle Control &amp; PID Algorithm Lead</span>
+            </div>
+          </div>
+          <button class="zoom-trigger comp-thumb" type="button" data-kind="image" data-src="images/competition.jpg" aria-label="View competition photo">
+            <img src="images/competition.jpg" alt="Intelligent car race — 5G remote autonomous driving vehicle" loading="lazy">
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== Projects ========== -->
     <section id="projects" class="block">
       <div class="container">
@@ -902,28 +950,6 @@
               <span class="tag star"><i class="fa-solid fa-star"></i> 20</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== Competitions ========== -->
-    <section id="competitions" class="block">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2 class="section-title">Competitions</h2>
-          <div class="section-rule"></div>
-        </div>
-        <div class="comp-item reveal reveal-1">
-          <div class="comp-body">
-            <span class="comp-title">20th National University Students Intelligent Car Race · 5G Remote Autonomous Driving Vehicle Challenge</span>
-            <div class="comp-meta">
-              <span class="pub-venue">First Prize · North China Division (Ranked 2nd)</span>
-              <span class="comp-role">Team Leader · CV &amp; Perception Algorithm Lead · Vehicle Control &amp; PID Algorithm Lead</span>
-            </div>
-          </div>
-          <button class="zoom-trigger comp-thumb" type="button" data-kind="image" data-src="images/competition.jpg" aria-label="View competition photo">
-            <img src="images/competition.jpg" alt="Intelligent car race — 5G remote autonomous driving vehicle" loading="lazy">
-          </button>
         </div>
       </div>
     </section>
