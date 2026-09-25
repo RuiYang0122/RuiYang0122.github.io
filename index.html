@@ -230,35 +230,6 @@
       margin: 20px 0;
       border-radius: 1px;
     }
-    .hero-links {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      margin-top: 22px;
-    }
-    .hero-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 15px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-2);
-      background: color-mix(in srgb, var(--surface) 30%, transparent);
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
-      backdrop-filter: blur(18px) saturate(160%);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: color 0.2s var(--ease), background-color 0.2s var(--ease), border-color 0.2s var(--ease);
-    }
-    .hero-btn:hover {
-      color: var(--text);
-      background: color-mix(in srgb, var(--surface) 80%, transparent);
-      border-color: var(--text-4);
-    }
-    .hero-btn i { font-size: 14px; color: var(--text-4); transition: color 0.2s var(--ease); }
-    .hero-btn:hover i { color: var(--text); }
     .hero-bio-wrap {
       margin: 26px 0 0;
       transition: opacity 0.7s var(--ease-out-expo);
@@ -277,6 +248,37 @@
     .hero-bio p { margin: 0; }
     .hero-bio p + p { margin-top: 10px; }
     html[data-theme="dark"] .hero-bio { color: #f4f4f5; }
+
+    .hero-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--text-2);
+      background: color-mix(in srgb, var(--surface) 30%, transparent);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      backdrop-filter: blur(18px) saturate(160%);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: color 0.2s var(--ease), background-color 0.2s var(--ease), border-color 0.2s var(--ease);
+    }
+    .hero-btn:hover {
+      color: var(--text);
+      background: color-mix(in srgb, var(--surface) 80%, transparent);
+      border-color: var(--text-4);
+    }
+    .hero-btn i { font-size: 14px; color: var(--text-4); transition: color 0.2s var(--ease); }
+    .hero-btn:hover i { color: var(--text); }
 
     .hero-aside { flex-shrink: 0; }
     .hero-portrait { position: relative; }
@@ -728,6 +730,8 @@
       .exp-thumb { width: 132px; height: 74px; }
       .zoom-trigger { width: 132px; height: 74px; }
       .hero-bio { padding: 12px 14px; }
+      .hero-links { gap: 8px; }
+      .hero-btn { padding: 6px 8px; font-size: 13px; }
       .comp-item { flex-direction: column; gap: 16px; }
       .comp-thumb { width: 100%; aspect-ratio: 16 / 9; }
       .memories-grid { grid-template-columns: repeat(2, 1fr); }
@@ -754,7 +758,13 @@
         <div class="hero-text">
           <h1 class="hero-name reveal">Rui Yang</h1>
           <div class="hero-rule reveal reveal-2"></div>
-          <div class="hero-links reveal reveal-3">
+          <div class="hero-bio-wrap reveal reveal-3">
+            <div class="hero-bio">
+              <p>I am pursuing a Bachelor's degree in EECS at the School of Information Science and Engineering, Shandong University. Now, I'm a research intern at <strong>Insta360 Research</strong>.</p>
+              <p>My research focuses on AIGC — especially efficient few-step generative modeling based on Flow Matching with multimodal reference conditioning — and AI4Sport, particularly VLM-based sports video analysis.</p>
+            </div>
+          </div>
+          <div class="hero-links reveal reveal-4">
             <a class="hero-btn" href="https://github.com/RuiYang0122" target="_blank" rel="noopener">
               <i class="fab fa-github"></i> GitHub
             </a>
@@ -764,12 +774,6 @@
             <a class="hero-btn" href="mailto:yangrui0122@foxmail.com">
               <i class="fa-regular fa-envelope"></i> Email
             </a>
-          </div>
-          <div class="hero-bio-wrap reveal reveal-4">
-            <div class="hero-bio">
-              <p>I am pursuing a Bachelor's degree in EECS at the School of Information Science and Engineering, Shandong University. Now, I'm a research intern at <strong>Insta360 Research</strong>.</p>
-              <p>My research focuses on AIGC — especially efficient few-step generative modeling based on Flow Matching with multimodal reference conditioning — and AI4Sport, particularly VLM-based sports video analysis.</p>
-            </div>
           </div>
         </div>
         <aside class="hero-aside reveal reveal-2">
