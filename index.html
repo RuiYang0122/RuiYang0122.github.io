@@ -1174,20 +1174,46 @@
     })();
   </script>
 
-  <script src="https://giscus.app/client.js"
-          data-repo="RuiYang0122/RuiYang0122.github.io"
-          data-repo-id="R_kgDOUIqKsg"
-          data-category="General"
-          data-category-id="DIC_kwDOUIqKss4DEgN9"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="preferred_color_scheme"
-          data-lang="zh-CN"
-          crossorigin="anonymous"
-          async>
+  <!-- giscus is injected only once the guestbook nears the viewport.
+       Loading client.js eagerly keeps the tab spinner turning forever when
+       giscus.app is slow or unreachable (common from mainland China): the
+       iframe never finishes, so the page's load event never fires. -->
+  <script>
+    (function () {
+      var host = document.querySelector('.giscus');
+      if (!host) return;
+      function load() {
+        if (host.dataset.giscusLoaded) return;
+        host.dataset.giscusLoaded = '1';
+        var attrs = {
+          'data-repo': 'RuiYang0122/RuiYang0122.github.io',
+          'data-repo-id': 'R_kgDOUIqKsg',
+          'data-category': 'General',
+          'data-category-id': 'DIC_kwDOUIqKss4DEgN9',
+          'data-mapping': 'pathname',
+          'data-strict': '0',
+          'data-reactions-enabled': '1',
+          'data-emit-metadata': '0',
+          'data-input-position': 'top',
+          'data-theme': 'preferred_color_scheme',
+          'data-lang': 'zh-CN'
+        };
+        var s = document.createElement('script');
+        s.src = 'https://giscus.app/client.js';
+        s.async = true;
+        s.crossOrigin = 'anonymous';
+        for (var k in attrs) s.setAttribute(k, attrs[k]);
+        host.appendChild(s);
+      }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { io.disconnect(); load(); }
+        }, { rootMargin: '600px 0px' });
+        io.observe(host);
+      } else {
+        load();
+      }
+    })();
   </script>
 </body>
 
