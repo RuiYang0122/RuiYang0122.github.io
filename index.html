@@ -278,9 +278,13 @@
       font-weight: 500;
       line-height: 1.2;
       color: var(--text-2);
-      background: color-mix(in srgb, var(--surface) 30%, transparent);
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
-      backdrop-filter: blur(18px) saturate(160%);
+      /* Deliberately no backdrop-filter. The bio card 14px above is
+         backdrop-filter: blur(18px), so its blur kernel covers this whole
+         row; every extra backdrop-filter element splits the card's backdrop
+         into separate surfaces and the seams show as hard vertical lines on
+         the card, at this row's column edges. A plain translucent fill is
+         near-identical at this size and keeps a single backdrop element. */
+      background: color-mix(in srgb, var(--surface) 55%, transparent);
       border: 1px solid var(--border);
       border-radius: 10px;
       transition: color 0.2s var(--ease), background-color 0.2s var(--ease), border-color 0.2s var(--ease);
@@ -1174,20 +1178,46 @@
     })();
   </script>
 
-  <script src="https://giscus.app/client.js"
-          data-repo="RuiYang0122/RuiYang0122.github.io"
-          data-repo-id="R_kgDOUIqKsg"
-          data-category="General"
-          data-category-id="DIC_kwDOUIqKss4DEgN9"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="preferred_color_scheme"
-          data-lang="zh-CN"
-          crossorigin="anonymous"
-          async>
+  <!-- giscus is injected only once the guestbook nears the viewport.
+       Loading client.js eagerly keeps the tab spinner turning forever when
+       giscus.app is slow or unreachable (common from mainland China): the
+       iframe never finishes, so the page's load event never fires. -->
+  <script>
+    (function () {
+      var host = document.querySelector('.giscus');
+      if (!host) return;
+      function load() {
+        if (host.dataset.giscusLoaded) return;
+        host.dataset.giscusLoaded = '1';
+        var attrs = {
+          'data-repo': 'RuiYang0122/RuiYang0122.github.io',
+          'data-repo-id': 'R_kgDOUIqKsg',
+          'data-category': 'General',
+          'data-category-id': 'DIC_kwDOUIqKss4DEgN9',
+          'data-mapping': 'pathname',
+          'data-strict': '0',
+          'data-reactions-enabled': '1',
+          'data-emit-metadata': '0',
+          'data-input-position': 'top',
+          'data-theme': 'preferred_color_scheme',
+          'data-lang': 'zh-CN'
+        };
+        var s = document.createElement('script');
+        s.src = 'https://giscus.app/client.js';
+        s.async = true;
+        s.crossOrigin = 'anonymous';
+        for (var k in attrs) s.setAttribute(k, attrs[k]);
+        host.appendChild(s);
+      }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { io.disconnect(); load(); }
+        }, { rootMargin: '600px 0px' });
+        io.observe(host);
+      } else {
+        load();
+      }
+    })();
   </script>
 </body>
 
