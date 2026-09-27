@@ -263,10 +263,17 @@
     }
     .hero-btn-wrap {
       display: flex;
-      transition: transform 0.25s var(--ease-out-expo);
-      will-change: transform;
+      /* Lift via `top`, not transform. The bio card's backdrop-filter
+         (blur 18px) reaches past its bottom edge, and `.hero-links` sits
+         only 14px below it, so the buttons fall inside the blur kernel.
+         Promoting a wrapper to a composited layer (what transform +
+         will-change do) splits that backdrop into separate surfaces and
+         the seam shows up as a hard vertical line on the card. `top` is a
+         paint-only property, so no layer is created. */
+      position: relative;
+      transition: top 0.25s var(--ease-out-expo);
     }
-    .hero-btn-wrap:hover { transform: translateY(-2px); }
+    .hero-btn-wrap:hover { top: -2px; }
     .hero-btn {
       flex: 1;
       display: inline-flex;
