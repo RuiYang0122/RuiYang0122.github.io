@@ -1,0 +1,19 @@
+index.html
+  s_f36767aabc5e3d::t_86c8c99fc7eeb3 9-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "49d7a26dba9f8fe8ac9aba7053fd3e4221f6c6de",
+  "prompts": {},
+  "sessions": {
+    "s_f36767aabc5e3d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8900a484-3e6d-4b33-93df-e9578a7591fa",
+        "model": "claude-opus-5"
+      },
+      "human_author": "unknown"
+    }
+  }
+}
